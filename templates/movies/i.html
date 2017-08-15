@@ -1,0 +1,7 @@
+<h1> Import a list of movies, separate each title with new line </h1>
+
+<form action="{% url 'movies:import_list' %}" method="POST">
+    {% csrf_token %}
+    <textarea name="list" rows="25" cols="50"></textarea>
+    <input type="submit" value="Submit">
+</form>

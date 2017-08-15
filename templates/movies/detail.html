@@ -1,0 +1,59 @@
+{% extends "movies/index.html" %}
+{% load static %}
+
+{% block header %}{% endblock %}
+
+{% block main %}
+
+<div style="padding-top:7%;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-5">
+                <img src="{% static 'movies/posters' %}{{ poster_url }}" style="width:400px">
+            </div>
+
+            <div class="col-lg-7">
+                <div class="col-lg-9 col-lg-offset-3">
+                    <h1 style="color:whitesmoke">{{ movie.title }}</h1>
+                </div>
+                    
+                <br>
+
+                <div class="col-lg-9 col-lg-offset-3 left">
+                    <h3>Director: <span style="color: slategrey">{{ movie.director }} </span></h3>
+                </div>
+
+                <br>
+
+                <div class="col-lg-9 col-lg-offset-3 left">
+                    <h3>RT Score: <span style="color: slategrey">{{ movie.rt_rating }}</span></h3>
+                </div>
+
+                <br>
+
+                <div class="col-lg-9 col-lg-offset-3 left">
+                    <h3>Date Added To List: <span style="color:slategrey">{{ movie.date_added }}</span></h3>
+                </div>
+
+                <br>
+
+                <div class="col-lg-9 col-lg-offset-3 left">
+                    <h3>Date Watched: <span style="color:slategrey">
+                        {% if movie.watched %} {{ movie.date_watched }} {% else %} N/A {% endif %}</span></h3>
+                </div>
+
+                <br>
+
+                <div class="col-lg-9 col-lg-offset-3 left" style="padding-top: 25px">
+                    <form action="{% url 'movies:update' movie.id %}" method="post">
+                        {% csrf_token %}
+                    <input style="color:black;" type="submit" value="Mark {% if movie.watched %}Unwatched{% else %}Watched{% endif %}">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

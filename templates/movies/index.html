@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<meta name="description" content="">
+	<meta name="author" content="Thomas Edward Ragucci">
+
+	<link rel="shortcut icon" href="favicon.ico">
+	<!--<link rel="apple-touch-icon" href="icon.png" /> -->
+	<title>Movie Watch List</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="{% static 'movies/css/main.css' %}" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Titillium+Web:300,400,700" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar_">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"></a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class=""><a href="{% url 'resume:index' %}">Home</a></li>
+					<li> <a href='https://www.instagram.com/thomas.2711/' target="_blank">Photography <i class="fa fa-instagram"></i></a></li>
+					<li class="dropdown active">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project(s)<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li class="active"><a href="#">Online Movie Watchlist</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					{% if logged_in %}
+					<li><a href="{% url 'movies:add' %}">Add to list</a></li>
+					<li><a href="{% url 'movies:logout_user' %}">Logout</a></li>
+					{% else %}
+					<li><a href="{% url 'movies:login_user' %}">Login</a></li>
+					{% endif %}
+				</ul>
+			</div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+	{% block header %}
+
+    <div class="header" id="headerwrap">
+    	<div class="container">
+    		<div class="row centered">
+    			<div class="col-lg-12">
+    				<h1>
+						<i class="fa fa-film" aria-hidden="true"></i>
+						Movie Watchlist
+					</h1>
+    			</div>
+    		</div>
+    	</div>
+	</div>	
+	
+	{% endblock %}
+
+	{% block main %}
+    <div class="container desc">
+    	<div class="row">
+			<div class="col-lg-11 col-lg-offset-1">
+				<div class="col-lg-3">
+					<ul style="list-style-type:none">
+						<li><h2>Title</h2></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3">
+					<ul style="list-style-type:none">
+						<li><h2>Director</h2></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3">
+					<ul style="list-style-type:none">
+						<li><h2>RT Score</h2></li>
+					</ul>
+				</div>
+
+				<div class="col-lg-1">
+					<ul style="list-style-type:none">
+						<li><h2>Watched</h2></li>
+					</ul>
+				</div>
+				
+
+			</div>
+		</div>
+
+		<div class="row">
+		{% for movie in movies_in_database %}
+			<div class="col-lg-11 col-lg-offset-1">
+				<div class="col-lg-3">
+					<ul style="list-style-type:none">
+						<li><a href="{% url 'movies:detail' movie.id %}"> {{ movie.title }} </a> </li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3">
+					<ul style="list-style-type:none">
+						<li> {{ movie.director }} </li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3">
+					<ul style="list-style-type:none">
+						<li>{{ movie.rt_rating }}</li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3">
+					<ul style="list-style-type:none">
+						<li>{% if movie.watched %} <i class="fa fa-check" aria-hidden="true"></i> {{ movie.date_watched }} {% endif %}</li>
+					</ul>
+				</div>
+			</div>
+			{% endfor %}
+
+    	</div> <!--/.row -->
+
+	</div>
+
+	{% endblock %}
+
+	<!--<script src="js/jquery.js"></script>-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- Begin Google Analytics
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-102670272-2', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
+	End Google Analytics -->
+</body>
+</html>

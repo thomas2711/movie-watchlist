@@ -1,0 +1,7 @@
+<h1> Add movie to watch list </h1>
+
+<form action="{% url 'movies:add_film_interstitial' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="film_name" placeholder="Film Title">
+    <input type="submit" value="Submit">
+</form>

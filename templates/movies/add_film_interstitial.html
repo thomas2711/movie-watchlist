@@ -1,0 +1,10 @@
+{{ results.total_results }} films with title: "{{ title }}" found.
+
+<form action="{% url 'movies:add_film_confirm' %}" method="POST">
+{% csrf_token %}
+{% for movie in results.results %}
+    <input type="radio" name="movie" id="{{ forloop.counter0 }}" value="{{ movie.id }}" {% if forloop.first %} checked {%endif%}/>
+    <label for="{{ forloop.counter }}">{{movie.original_title}}, {{movie.release_date}} </label> <br>
+    {% endfor %}
+    <input type="submit" value="Select">
+</form>

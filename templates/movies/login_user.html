@@ -1,0 +1,23 @@
+{% extends "movies/index.html" %}
+{% load static %}
+
+{% block header %}{% endblock %}
+
+{% block main %}
+
+<div style="padding-top:7%;">
+    <div class="container">
+        <div class="row">
+            <h2> Login to modify database </h2>
+
+            <form action="{% url 'movies:login_user' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" style="color: black;" name="username" placeholder="Username">
+                <input type="password" style="color: black;" name="password" placeholder="Password">
+                <input type="submit" style="color: slategray;" value="Login">
+                </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

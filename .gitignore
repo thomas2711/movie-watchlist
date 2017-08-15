@@ -1,0 +1,7 @@
+
+.vscode/
+**/.DS_Store
+*.pyc
+*~
+tmdb_api_key
+static/movies/posters/
