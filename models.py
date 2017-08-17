@@ -14,6 +14,6 @@ class Movie(models.Model):
     date_watched = models.DateField(default = date.today)
     poster_url = models.CharField(max_length=200)
     def __str__(self):
-        return self.title + ", director: " + self.director + ", Rotten Tomatoes score: " + str(self.rt_rating)
+        return self.title
 
 #class TVShow(models.Model):
