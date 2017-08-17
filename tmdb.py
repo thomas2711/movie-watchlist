@@ -26,7 +26,8 @@ def get_movie(tmdb_id):
 def save_poster(movie):
     poster_path = movie['poster_path']
     base_url = api_config['images']['secure_base_url'] + 'w500/' + poster_path
-    dest_url = 'movies/static/movies/posters' + poster_path
+    #dest_url = 'movies/static/movies/posters' + poster_path
+    dest_url = 'static/movies/posters' + poster_path
     urllib.request.urlretrieve(base_url, dest_url)
     return poster_path
 
