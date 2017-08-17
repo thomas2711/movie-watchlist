@@ -45,12 +45,13 @@
 
                 <br>
 
+                {% if logged_in %}
                 <div class="col-lg-9 col-lg-offset-3 left" style="padding-top: 25px">
                     <form action="{% url 'movies:update' movie.id %}" method="post">
                         {% csrf_token %}
                     <input style="color:black;" type="submit" value="Mark {% if movie.watched %}Unwatched{% else %}Watched{% endif %}">
                 </div>
-
+                {% endif %}
             </div>
         </div>
     </div>

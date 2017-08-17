@@ -21,7 +21,12 @@ def index(request):
 
 def detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
-    return render(request, 'movies/detail.html', {'movie': movie, 'poster_url': movie.poster_url})
+    context = {
+        'movie': movie,
+        'poster_url': movie.poster_url,
+        'logged_in': request.user.is_authenticated(),
+    }
+    return render(request, 'movies/detail.html', context)
 
 def update(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)

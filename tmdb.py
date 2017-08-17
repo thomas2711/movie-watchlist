@@ -2,7 +2,7 @@ import json
 import requests
 import urllib.request
 
-api_key = open('movies/tmdb_api_key').readline()
+api_key = open('movies/tmdb_api_key').readline().strip()
 api_url = "https://api.themoviedb.org/3/"
 
 def get_config():
