@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="Thomas Edward Ragucci">
 
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="shortcut icon" href="{% static 'movies/favicon.ico' %}">
 	<!--<link rel="apple-touch-icon" href="icon.png" /> -->
 	<title>Movie Watch List</title>
 
@@ -133,7 +133,7 @@
 
 				<div class="col-lg-3">
 					<ul style="list-style-type:none">
-						<li>{% if movie.watched %} <i class="fa fa-check" aria-hidden="true"></i> {{ movie.date_watched }} {% endif %}</li>
+						<li>{% if movie.watched %} <i class="fa fa-check" aria-hidden="true"></i> {{ movie.date_watched.date }} {% endif %}</li>
 					</ul>
 				</div>
 			</div>

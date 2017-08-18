@@ -50,6 +50,14 @@
                     <form action="{% url 'movies:update' movie.id %}" method="post">
                         {% csrf_token %}
                     <input style="color:black;" type="submit" value="Mark {% if movie.watched %}Unwatched{% else %}Watched{% endif %}">
+                    </form>
+                </div>
+
+                <div class="col-lg-9 col-lg-offset-3 left" style="padding-top: 25px">
+                    <form action="{% url 'movies:delete_' movie.id %}" method="post">
+                        {% csrf_token %}
+                    <input style="color:black;" type="submit" value="Delete">
+                    </form>
                 </div>
                 {% endif %}
             </div>

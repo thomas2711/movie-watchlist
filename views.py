@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 
 from .models import Movie
-from datetime import date
+from datetime import datetime
 
 from movies import tmdb
 from movies import rt
@@ -12,7 +12,7 @@ from movies import rt
 # Create your views here.
 
 def index(request):
-    movie_list = Movie.objects.all()
+    movie_list = Movie.objects.order_by('-date_added')
     context = {
         'movies_in_database': movie_list,
         'logged_in': request.user.is_authenticated(),
@@ -29,13 +29,24 @@ def detail(request, movie_id):
     return render(request, 'movies/detail.html', context)
 
 def update(request, movie_id):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('movies:login_user'))
     movie = get_object_or_404(Movie, pk=movie_id)
     if movie.watched:
         movie.watched = False
     else:
         movie.watched = True
-        movie.date_watched = date.today()
+        movie.date_watched = datetime.today()
     movie.save()
+    return HttpResponseRedirect(reverse('movies:index'))
+
+def delete_(request, movie_id):
+    print("test")
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('movies:login_user'))
+    movie = get_object_or_404(Movie, pk=movie_id)
+    movie.delete()
+    print("deleted")
     return HttpResponseRedirect(reverse('movies:index'))
 
 def login_user(request):
