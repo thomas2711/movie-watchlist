@@ -13,6 +13,7 @@ class Movie(models.Model):
     date_added = models.DateTimeField(default = datetime.today)
     date_watched = models.DateTimeField(default = datetime.today)
     poster_url = models.CharField(max_length=200)
+    fav = models.BooleanField(default = False)
     def __str__(self):
         return self.title
 

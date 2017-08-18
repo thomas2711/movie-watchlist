@@ -54,6 +54,13 @@
                 </div>
 
                 <div class="col-lg-9 col-lg-offset-3 left" style="padding-top: 25px">
+                    <form action="{% url 'movies:fav' movie.id %}" method="post">
+                        {% csrf_token %}
+                    <input style="color:black;" type="submit" value="{% if movie.fav %}Unfavorite{% else %}Mark Favorite{% endif %}">
+                    </form>
+                </div>
+
+                <div class="col-lg-9 col-lg-offset-3 left" style="padding-top: 25px">
                     <form action="{% url 'movies:delete_' movie.id %}" method="post">
                         {% csrf_token %}
                     <input style="color:black;" type="submit" value="Delete">

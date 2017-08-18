@@ -41,12 +41,21 @@ def update(request, movie_id):
     return HttpResponseRedirect(reverse('movies:index'))
 
 def delete_(request, movie_id):
-    print("test")
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('movies:login_user'))
     movie = get_object_or_404(Movie, pk=movie_id)
     movie.delete()
-    print("deleted")
+    return HttpResponseRedirect(reverse('movies:index'))
+
+def fav(request, movie_id):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('movies:login_user'))
+    movie = get_object_or_404(Movie, pk=movie_id)
+    if movie.fav:
+        movie.fav = False
+    else:
+        movie.fav = True
+    movie.save()
     return HttpResponseRedirect(reverse('movies:index'))
 
 def login_user(request):
