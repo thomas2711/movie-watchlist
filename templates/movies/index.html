@@ -133,7 +133,7 @@
 
 				<div class="col-lg-3">
 					<ul style="list-style-type:none">
-						<li>{% if movie.watched %} <i class="fa fa-check" aria-hidden="true"></i> {{ movie.date_watched.date }} {% endif %}</li>
+						<li>{% if movie.watched %} <i class="fa fa-check" aria-hidden="true"></i> {{ movie.date_watched|date:"N j, Y" }} {% endif %}</li>
 					</ul>
 				</div>
 			</div>
