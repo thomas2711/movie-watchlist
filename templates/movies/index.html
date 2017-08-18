@@ -82,13 +82,17 @@
 	
 	<div>
 		<div class="small row col-lg-10 col-lg-offset-2">
-				{% if asc %} 
-				<a href="{% url 'movies:index' %}?sort_by={{ ordering }}&asc=n"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-				{% else %}
-				<a href="{% url 'movies:index' %}?sort_by={{ ordering }}&asc=y"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-				{% endif %}	
-				Sort by: <a href="{% url 'movies:index' %}">default</a>, <a href="{% url 'movies:index' %}?sort_by=date_added&asc={% if not asc %}n{% else %}y{% endif %}">date added</a>, <a href="{% url 'movies:index' %}?sort_by=title&asc={% if not asc %}n{% else %}y{% endif %}">title</a>, <a href="{% url 'movies:index' %}?sort_by=rt_rating&asc={% if not asc %}n{% else %}y{% endif %}">rt score</a>, <a href="{% url 'movies:index' %}?sort_by=fav&asc={% if not asc %}n{% else %}y{% endif %}">favorite</a>, <a href="{% url 'movies:index' %}?sort_by=watched&asc={% if not asc %}n{% else %}y{% endif %}">watched.</a> &nbsp;
-				<span><i class="fa fa-star" style="color: #616679;" aria-hidden="true"></i> = favorite</span>
+			<span id="bloodhound" style="color: #716779;">
+				<input class="typeahead" type="text" placeholder="Search">
+			</span>
+			&nbsp;
+			{% if asc %} 
+			<a href="{% url 'movies:index' %}?sort_by={{ ordering }}&asc=n"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+			{% else %}
+			<a href="{% url 'movies:index' %}?sort_by={{ ordering }}&asc=y"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+			{% endif %}	
+			Sort by: <a href="{% url 'movies:index' %}">default</a>, <a href="{% url 'movies:index' %}?sort_by=date_added&asc={% if not asc %}n{% else %}y{% endif %}">date added</a>, <a href="{% url 'movies:index' %}?sort_by=title&asc={% if not asc %}n{% else %}y{% endif %}">title</a>, <a href="{% url 'movies:index' %}?sort_by=rt_rating&asc={% if not asc %}n{% else %}y{% endif %}">rt score</a>, <a href="{% url 'movies:index' %}?sort_by=fav&asc={% if not asc %}n{% else %}y{% endif %}">favorite</a>, <a href="{% url 'movies:index' %}?sort_by=watched&asc={% if not asc %}n{% else %}y{% endif %}">watched.</a> &nbsp;
+			<span><i class="fa fa-star" style="color: #716779;" aria-hidden="true"></i> = favorite</span>
 		</div>
 	</div>
 
@@ -155,6 +159,15 @@
     	</div> <!--/.row -->
 
 	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.js"></script>
+
+	<script> 
+		var movies_typeahead = {{ typeahead|safe }};
+		var pks = {{ pks|safe }};
+	</script>
+
+	<script src="{% static 'movies/js/typeahead.js' %}"></script>
 
 	{% endblock %}
 

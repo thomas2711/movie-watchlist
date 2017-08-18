@@ -26,10 +26,19 @@ def index(request):
     
     movie_list = Movie.objects.order_by(ordering) if asc else Movie.objects.order_by(('-' + ordering))
 
+    typeahead = []
+    pks = []
+
+    for m in movie_list:
+        typeahead.append(m.title)
+        pks.append(str(m.pk))
+
     context = {
         'movies_in_database': movie_list,
         'asc' : asc,
         'ordering' : ordering,
+        'typeahead': typeahead,
+        'pks': pks,
         'logged_in': request.user.is_authenticated(),
     }
     return render(request, 'movies/index.html', context)
