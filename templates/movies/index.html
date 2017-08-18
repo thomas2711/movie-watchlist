@@ -44,7 +44,7 @@
 					<li class="dropdown active">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project(s)<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li class="active"><a href="#">Online Movie Watchlist</a></li>
+							<li class="active"><a href="{% url 'movies:index' %}">Online Movie Watchlist</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -79,6 +79,19 @@
 	{% endblock %}
 
 	{% block main %}
+	
+	<div>
+		<div class="small row col-lg-10 col-lg-offset-2">
+				{% if asc %} 
+				<a href="{% url 'movies:index' %}?sort_by={{ ordering }}&asc=n"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+				{% else %}
+				<a href="{% url 'movies:index' %}?sort_by={{ ordering }}&asc=y"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+				{% endif %}	
+				Sort by: <a href="{% url 'movies:index' %}">default</a>, <a href="{% url 'movies:index' %}?sort_by=date_added&asc={% if not asc %}n{% else %}y{% endif %}">date added</a>, <a href="{% url 'movies:index' %}?sort_by=title&asc={% if not asc %}n{% else %}y{% endif %}">title</a>, <a href="{% url 'movies:index' %}?sort_by=rt_rating&asc={% if not asc %}n{% else %}y{% endif %}">rt score</a>, <a href="{% url 'movies:index' %}?sort_by=fav&asc={% if not asc %}n{% else %}y{% endif %}">favorite</a>, <a href="{% url 'movies:index' %}?sort_by=watched&asc={% if not asc %}n{% else %}y{% endif %}">watched.</a> &nbsp;
+				<span><i class="fa fa-star" style="color: #616679;" aria-hidden="true"></i> = favorite</span>
+		</div>
+	</div>
+
     <div class="container desc">
     	<div class="row">
 			<div class="col-lg-11 col-lg-offset-1">

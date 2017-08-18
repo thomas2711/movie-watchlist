@@ -45,6 +45,13 @@
 
                 <br>
 
+                <div class="col-lg-9 col-lg-offset-3 left">
+                        <h3>Marked as Favorite: <span style="color:slategrey">
+                            {% if movie.fav %} <i class="fa fa-check" aria-hidden="true"></i>{% else %} no {% endif %}</span></h3>
+                    </div>
+    
+                    <br>
+
                 {% if logged_in %}
                 <div class="col-lg-9 col-lg-offset-3 left" style="padding-top: 25px">
                     <form action="{% url 'movies:update' movie.id %}" method="post">

@@ -12,9 +12,24 @@ from movies import rt
 # Create your views here.
 
 def index(request):
-    movie_list = Movie.objects.order_by('-date_added')
+    print(request.GET)
+
+    ordering = 'date_added'
+    asc = False
+
+    if 'sort_by' in request.GET and 'asc' in request.GET:
+        sort_by_opt = [f.name for f in Movie._meta.get_fields()]
+        if request.GET['asc'] == 'y':
+            asc = True
+        if request.GET['sort_by'] in sort_by_opt:
+            ordering = request.GET['sort_by']
+    
+    movie_list = Movie.objects.order_by(ordering) if asc else Movie.objects.order_by(('-' + ordering))
+
     context = {
         'movies_in_database': movie_list,
+        'asc' : asc,
+        'ordering' : ordering,
         'logged_in': request.user.is_authenticated(),
     }
     return render(request, 'movies/index.html', context)
