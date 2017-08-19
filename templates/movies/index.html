@@ -105,19 +105,19 @@
 					</ul>
 				</div>
 
-				<div class="col-lg-3">
+				<div class="col-lg-3 hideOnMobile">
 					<ul style="list-style-type:none">
 						<li><h2>Director</h2></li>
 					</ul>
 				</div>
 
-				<div class="col-lg-3">
+				<div class="col-lg-3 hideOnMobile">
 					<ul style="list-style-type:none">
 						<li><h2>RT Score</h2></li>
 					</ul>
 				</div>
 
-				<div class="col-lg-1">
+				<div class="col-lg-1 hideOnMobile">
 					<ul style="list-style-type:none">
 						<li><h2>Watched</h2></li>
 					</ul>
@@ -136,19 +136,19 @@
 					</ul>
 				</div>
 
-				<div class="col-lg-3">
+				<div class="col-lg-3 hideOnMobile">
 					<ul style="list-style-type:none">
 						<li> {{ movie.director }} </li>
 					</ul>
 				</div>
 
-				<div class="col-lg-3">
+				<div class="col-lg-3 hideOnMobile">
 					<ul style="list-style-type:none">
 						<li>{{ movie.rt_rating }}</li>
 					</ul>
 				</div>
 
-				<div class="col-lg-3">
+				<div class="col-lg-3 hideOnMobile">
 					<ul style="list-style-type:none">
 						<li>{% if movie.watched %} <i class="fa fa-check" aria-hidden="true"></i> {{ movie.date_watched|date:"N j, Y" }} {% endif %}</li>
 					</ul>
