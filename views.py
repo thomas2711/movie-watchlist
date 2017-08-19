@@ -12,8 +12,6 @@ from movies import rt
 # Create your views here.
 
 def index(request):
-    print(request.GET)
-
     ordering = 'date_added'
     asc = False
 
