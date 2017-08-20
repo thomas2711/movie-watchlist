@@ -1,0 +1,27 @@
+{% extends "movies/index.html" %}
+{% load static %}
+
+{% block main %}
+
+<div style="padding-top:0%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h1 class="centered" style="color:slategrey;">About</h1>
+                <span>
+                    I've traditionally kept a list of movies that I've seen / want to see in the notes app on my phone. Whenever I'm looking for a movie to watch, I refer to the list to choose one.
+                    <br><br>
+                    However, this is cumbersome because it doesn't provide an easy way to view details about each movie &mdash; I have to use Google or some other service to get more information to make a decision.
+                    <br><br>
+                    So, I thought a fun and useful project would be to create a webapp to do this for me. I use the Django web framework to generate the webpages, and the TMDb API to get information for each movie. This information is stored in an SQL database, along with other metadata pertaining to when certain database actions were taken, and displayed online. 
+                    <br><br>
+                    Thus, I have been able to gain experience developing webapps while creating a tool that I find genuinely useful. Additionally, this framework allows me to easily add, change, or expand the information that is stored and the way it is displayed.
+                    <br><br>
+                    All code for this project is available <a href="https://github.com/thomas2711/movie-watchlist" target="_blank">here</a>.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

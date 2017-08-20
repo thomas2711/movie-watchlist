@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^import_list$', views.import_list, name='import_list'),
     url(r'^login_user$', views.login_user, name='login_user'),
     url(r'^logout_user$', views.logout_user, name='logout_user'),
+    url(r'^about$', views.about, name='about'),
 ]

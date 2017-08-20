@@ -97,6 +97,8 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('movies:index'))
 
+def about(request):
+    return render(request, 'movies/about.html')
 
 def add(request):
     if not request.user.is_authenticated:
