@@ -132,7 +132,7 @@
 			<div class="col-lg-11 col-lg-offset-1">
 				<div class="col-lg-3">
 					<ul style="list-style-type:none">
-						<li><a href="{% url 'movies:detail' movie.id %}">{{ movie.title }} {% if movie.fav %} <i class="fa fa-star" aria-hidden="true"></i>{% endif %}{% if movie.watched %} <span class="showOnMobile"><i class="fa fa-check" aria-hidden="true" style="color:snow;"></i></span>{% endif %}</a> </li>
+						<li><a href="{% url 'movies:detail' movie.id %}">{{ movie.title }} ({{ movie.year }}) {% if movie.fav %} <i class="fa fa-star" aria-hidden="true"></i>{% endif %}{% if movie.watched %} <span class="showOnMobile"><i class="fa fa-check" aria-hidden="true" style="color:snow;"></i></span>{% endif %}</a> </li>
 					</ul>
 				</div>
 
