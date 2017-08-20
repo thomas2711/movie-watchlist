@@ -92,7 +92,7 @@
 			<a href="{% url 'movies:index' %}?sort_by={{ ordering }}&asc=y"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
 			{% endif %}	
 			Sort by: <a href="{% url 'movies:index' %}">default</a>, <a href="{% url 'movies:index' %}?sort_by=date_added&asc={% if not asc %}n{% else %}y{% endif %}">date added</a>, <a href="{% url 'movies:index' %}?sort_by=title&asc={% if not asc %}n{% else %}y{% endif %}">title</a>, <a href="{% url 'movies:index' %}?sort_by=rt_rating&asc={% if not asc %}n{% else %}y{% endif %}">rt score</a>, <a href="{% url 'movies:index' %}?sort_by=fav&asc={% if not asc %}n{% else %}y{% endif %}">favorite</a>, <a href="{% url 'movies:index' %}?sort_by=watched&asc={% if not asc %}n{% else %}y{% endif %}">watched.</a> &nbsp;
-			<span><i class="fa fa-star" style="color: #716779;" aria-hidden="true"></i> = favorite</span>
+			<span><i class="fa fa-star" style="color: #716779;" aria-hidden="true"></i> = favorite, <i class="fa fa-check" aria-hidden="true"></i> = watched</span>
 		</div>
 	</div>
 
@@ -132,7 +132,7 @@
 			<div class="col-lg-11 col-lg-offset-1">
 				<div class="col-lg-3">
 					<ul style="list-style-type:none">
-						<li><a href="{% url 'movies:detail' movie.id %}">{{ movie.title }} {% if movie.fav %} <i class="fa fa-star" aria-hidden="true"></i>{% endif %}</a> </li>
+						<li><a href="{% url 'movies:detail' movie.id %}">{{ movie.title }} {% if movie.fav %} <i class="fa fa-star" aria-hidden="true"></i>{% endif %}{% if movie.watched %} <span class="showOnMobile"><i class="fa fa-check" aria-hidden="true" style="color:snow;"></i></span>{% endif %}</a> </li>
 					</ul>
 				</div>
 
